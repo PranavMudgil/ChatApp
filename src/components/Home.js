@@ -21,7 +21,7 @@ state={
 
     render(){
 	 return(
-	 <View>
+	 <View style={styles.background}>
 	     <Text style={styles.title}>
 		  Enter Your Name:
 	     </Text>
@@ -34,9 +34,7 @@ state={
      }}
        value={this.state.name}
        />
-       <Text style={styles.title}>
-          Enter Your Password:
-       </Text>
+       <Text style={styles.title}> Enter Your Password:</Text>
        <TextInput
        placeholder="Password" style={styles.nameInput}
        onChangeText={(text)=>{
@@ -44,38 +42,25 @@ state={
            password: text,
          })
      }}
-       value={this.state.password}
-       />
+       value={this.state.password}/>
 
       <View style={styles.container}>
-
-      <TouchableOpacity
-        onPress={()=>{
-          console.log(this.state.name,this.state.password);
-          Actions.Chat({
-            name: this.state.name,
-          });
-        })>
-        }}
-      >
-        <Text style={styles.buttonText}>
-
-         Sign In
-        </Text>
-       </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={()=>{
-          })>
-        }}
-        >
-          <Text style={styles.buttonText}
-
-          forgot Password
-          </Text>
-      </TouchableOpacity>
-
-
+        <Button
+           style={styles.buttonText}
+           title='Sign In'
+           onPress={()=>{
+              console.log(this.state.name,this.state.password);
+              Actions.chat({
+                name: this.state.name,
+               password: this.state.password,
+              });
+          }}/>
+       <Button style={styles.buttonText} title='forgot Password'
+       onPress={()=>{
+          alert('Feature not defined yet');
+       }}/>
+      </View>
+</View>
 	 );
 	}
 }
@@ -94,15 +79,20 @@ var styles = StyleSheet.create({
   },
 
   container: {
-    flex: 1,
+    flex: 0,
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
 
   },
+  Background: {
+  backgroundColor: '#d0dae0',
+  },
+
   buttonText: {
-   flex: 3,
+   flex: 1,
    fontSize: 20,
+   padding: 10,
+   backgroundColor: '#428cf4',
  },
 });
 
